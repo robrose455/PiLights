@@ -75,7 +75,7 @@ def sync_to_song(beats, playback):
             # beats[i + 1] - 100ms delay
             #START LIGHTS
             # wait_time = beats[j] - beats[j + 1]
-
+            print("Hit")
             initial_buffer = beats[i + 1] - playback
             initial_beat = i + 1
 
