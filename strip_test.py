@@ -68,7 +68,7 @@ def sync_to_song(beats, playback):
     for i in range(len(beats)-1):
 
         # i = 2300
-        if beats[i] > playback > beats[i + 1]:
+        if beats[i] < playback < beats[i + 1]:
 
             # playback is in between these beats
 
