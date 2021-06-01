@@ -110,6 +110,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         cur_beat += 1
 
         while brightness != 1.0:
+            print(brightness)
             strip.brightness = brightness
             brightness += 0.005
         strip.fill(colors[cur_color])
@@ -121,7 +122,6 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
                 brightness += 0.1
             cur_color = 0
 
-        print(strip.brightness)
         strip.brightness = 0.1
 
         wait_time = beats[cur_beat + 1] - beats[cur_beat]
