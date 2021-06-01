@@ -34,7 +34,7 @@ colors = [ (255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (255, 0, 255), 
 
 
 strip = neopixel.NeoPixel(
-    LED_PIN, LED_COUNT, brightness=0.5, auto_write=True
+    LED_PIN, LED_COUNT, brightness=1.0, auto_write=True
 )
 def get_current_track_id():
 
@@ -108,7 +108,6 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         cur_beat += 1
 
         strip.fill(colors[cur_color])
-        strip.show()
 
         cur_color += 1
 
