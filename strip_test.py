@@ -101,7 +101,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         brightness = 1
         while brightness < 255:
 
-            strip.setBrightness(brightness)
+            strip.brightness = brightness
             brightness += 1
             strip.fill((255,0,0))
             strip.show()
