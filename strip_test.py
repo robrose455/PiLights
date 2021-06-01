@@ -101,7 +101,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
     cur_beat = initial_beat
 
-    cur_color = colors[randint(0, len(colors))]
+    cur_color = colors[random.randInt(0, len(colors))]
 
     while cur_beat < total_beats - 1:
 
@@ -113,7 +113,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         prev_color = cur_color
         new_color = False
         while new_color is False:
-            cur_color = colors[randint(0, len(colors))]
+            cur_color = colors[random.randInt(0, len(colors))]
             if prev_color is not cur_color:
                 new_color = True
 
