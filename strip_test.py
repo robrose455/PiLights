@@ -113,7 +113,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
             print(brightness)
             strip.brightness = brightness
             strip.show()
-            brightness += 0.0005
+            brightness += 0.05
         strip.fill(colors[cur_color])
 
         cur_color += 1
