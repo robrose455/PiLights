@@ -108,10 +108,18 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         print(wait_time)
         time.sleep(wait_time)
 
+    print("Song Ended")
+
+    time.sleep(3)
+
+
+
 if __name__ == '__main__':
 
     #sp.pause_playback()
     #sp.start_playback(context_uri='spotify:playlist:6mf5APVavd17vvPWzxRaq8', offset={
                       #"position": 5}, position_ms=0)
-    initial_buffer, initial_beat, total_beats, beats = sync_to_song(beats=get_rhythm(track_id=get_current_track_id()), playback=get_playback_position())
-    control_lights(initial_buffer, initial_beat, total_beats, beats)
+
+    while True:
+        initial_buffer, initial_beat, total_beats, beats = sync_to_song(beats=get_rhythm(track_id=get_current_track_id()), playback=get_playback_position())
+        control_lights(initial_buffer, initial_beat, total_beats, beats)
