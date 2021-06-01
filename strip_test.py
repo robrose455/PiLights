@@ -121,8 +121,6 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         cur_color += 1
 
         if cur_color == len(colors):
-            if brightness != 1.0:
-                brightness += 0.1
             cur_color = 0
 
         strip.brightness = 0.1
