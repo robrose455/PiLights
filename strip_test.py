@@ -134,7 +134,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         t3 = 0
 
 
-        wait_time = beats[cur_beat + 1] - beats[cur_beat] - (t3/1000)
+        wait_time = beats[cur_beat + 1] - beats[cur_beat]
 
         print(wait_time)
 
