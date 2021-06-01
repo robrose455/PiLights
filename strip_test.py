@@ -98,7 +98,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
         cur_beat += 1
 
-        strip.fill(255,0,0)
+        strip.fill((255,0,0))
         strip.show()
 
         strip.clear()
