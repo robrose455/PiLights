@@ -112,7 +112,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         t1 = time.thread_time_ns()
 
         strip.fill(colors[cur_color])
-        
+
         while brightness < 1.0:
             strip.brightness = brightness
             strip.show()
@@ -128,15 +128,14 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         strip.brightness = 0.1
         brightness = 0.1
 
-        wait_time = beats[cur_beat + 1] - beats[cur_beat]
-
-
         t2 = time.thread_time_ns()
 
         t3 = (t2 - t1) / 10000000
         print(t3)
 
-        time.sleep(wait_time - (t3 / 1000))
+        wait_time = beats[cur_beat + 1] - beats[cur_beat] - t3
+
+        time.sleep(wait_time)
 
     print("Song Ended")
 
