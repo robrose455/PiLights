@@ -56,33 +56,35 @@ def get_playback_position():
     return playback_pos_ms
 
 
-def play_song(beats, playback):
+def sync_to_song(beats, playback):
 
-    sp.pause_playback()
-    sp.start_playback(context_uri='spotify:playlist:6mf5APVavd17vvPWzxRaq8', offset={
-                      "position": 5}, position_ms=0)
+    #beats [2300,2306,2310...]
+    #playback [2304]
 
-    for i in range(len(beats)):
+    initial_buffer = 0
+    initial_beat = 0
 
-        print(beats[i])
-        strip.fill((255, 0, 0))
-        strip.show()
+    for i in range(len(beats)-1):
 
-        wait_time = 0
-        if i != len(beats):
-            wait_time = beats[i + 1] - beats[i]
-        strip.fill((0, 0, 0))
-        strip.show()
+        # i = 2300
+        if beats[i] > playback > beats[i + 1]:
 
-        time.sleep(wait_time)
+            # playback is in between these beats
 
-def test_data_loop():
+            # beats[i + 1] - 100ms delay
+            #START LIGHTS
+            # wait_time = beats[j] - beats[j + 1]
 
-    while True:
-        print(get_playback_position())
+            initial_buffer = beats[i + 1] - playback
+            initial_beat = i + 1
 
+    print("Buffer: " + str(initial_buffer))
+    print("Starting Beat: " + str(initial_beat))
+    return initial_buffer, initial_beat
 
 if __name__ == '__main__':
 
-    test_data_loop()
-    #play_song(beats=get_rhythm(track_id=get_current_track_id()), playback=get_playback_position())
+    #sp.pause_playback()
+    #sp.start_playback(context_uri='spotify:playlist:6mf5APVavd17vvPWzxRaq8', offset={
+                      #"position": 5}, position_ms=0)
+    sync_to_song(beats=get_rhythm(track_id=get_current_track_id()), playback=get_playback_position())
