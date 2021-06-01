@@ -34,7 +34,7 @@ colors = [ (255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (255, 0, 255), 
 
 
 strip = neopixel.NeoPixel(
-    LED_PIN, LED_COUNT
+    LED_PIN, LED_COUNT, brightness=0.1
 )
 def get_current_track_id():
 
