@@ -103,7 +103,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
     cur_color = 0
 
-    while cur_beat < total_beats - 1:
+    while cur_beat < total_beats - 2:
 
         cur_beat += 1
 
@@ -115,9 +115,6 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         if cur_color == len(colors):
 
             cur_color = 0
-
-
-
 
         wait_time = beats[cur_beat + 1] - beats[cur_beat]
         print(wait_time)
