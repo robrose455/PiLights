@@ -126,7 +126,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         brightness = 0.1
 
         wait_time = beats[cur_beat + 1] - beats[cur_beat]
-        print(wait_time)
+        
         print(time.time())
         time.sleep(wait_time)
 
