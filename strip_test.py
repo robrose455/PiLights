@@ -52,7 +52,7 @@ def get_playback_position():
     response = sp.current_playback()
     playback_pos_ms = response["progress_ms"]
 
-    return playback_pos_ms
+    return playback_pos_ms / 1000
 
 
 def sync_to_song(beats, playback):
