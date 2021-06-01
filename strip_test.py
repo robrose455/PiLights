@@ -101,21 +101,22 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
     cur_beat = initial_beat
 
-    cur_color = colors[random.randInt(0, len(colors))]
+    cur_color = 0
 
     while cur_beat < total_beats - 1:
 
         cur_beat += 1
 
-        strip.fill(cur_color)
+        strip.fill(colors[cur_color])
         strip.show()
 
-        prev_color = cur_color
-        new_color = False
-        while new_color is False:
-            cur_color = colors[random.randInt(0, len(colors))]
-            if prev_color is not cur_color:
-                new_color = True
+        cur_color += 1
+
+        if cur_color == len(colors):
+
+            cur_color = 0
+
+
 
 
         wait_time = beats[cur_beat + 1] - beats[cur_beat]
