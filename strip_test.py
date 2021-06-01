@@ -79,7 +79,7 @@ def play_song(beats, playback):
 def test_data_loop():
 
     while True:
-        print(sp.get_playback_position)
+        print(sp.get_playback_position())
 
 
 if __name__ == '__main__':
