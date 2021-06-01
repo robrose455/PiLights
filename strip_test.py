@@ -101,7 +101,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         strip.fill((255,0,0))
         strip.show()
 
-        strip.clear()
+        strip.fill((0,0,0))
         strip.show()
 
         wait_time = beats[cur_beat + 1] - beats[cur_beat]
