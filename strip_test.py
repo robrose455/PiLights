@@ -63,6 +63,7 @@ def sync_to_song(beats, playback):
     print("Playback: " + str(playback))
     initial_buffer = 0
     initial_beat = 0
+    total_beats = len(beats)
 
     for i in range(len(beats)-1):
 
@@ -85,11 +86,32 @@ def sync_to_song(beats, playback):
 
     print("Buffer: " + str(initial_buffer))
     print("Starting Beat: " + str(initial_beat))
-    return initial_buffer, initial_beat
+    return initial_buffer, initial_beat, total_beats, beats
+
+def control_lights(initial_buffer, initial_beat, total_beats, beats):
+
+    time.sleep(initial_buffer)
+
+    cur_beat = initial_beat
+
+    while cur_beat < total_beats - 1:
+
+        cur_beat += 1
+
+        strip.fill(255,0,0)
+        strip.show()
+
+        strip.clear()
+        strip.show()
+
+        wait_time = beats[cur_beat + 1] - beats[cur_beat]
+        print(wait_time)
+        time.sleep(wait_time)
 
 if __name__ == '__main__':
 
     #sp.pause_playback()
     #sp.start_playback(context_uri='spotify:playlist:6mf5APVavd17vvPWzxRaq8', offset={
                       #"position": 5}, position_ms=0)
-    sync_to_song(beats=get_rhythm(track_id=get_current_track_id()), playback=get_playback_position())
+    initial_buffer, initial_beat, total_beats, beats = sync_to_song(beats=get_rhythm(track_id=get_current_track_id()), playback=get_playback_position())
+    control_lights(initial_buffer, initial_beat, total_beats, beats)
