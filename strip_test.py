@@ -32,7 +32,6 @@ strip = neopixel.NeoPixel(
 def get_current_track_id():
 
     response = sp.current_user_playing_track()
-    print(response)
     track_id = response['item']['id']
 
     return track_id
@@ -61,6 +60,8 @@ def sync_to_song(beats, playback):
     #beats [2300,2306,2310...]
     #playback [2304]
 
+    print("Beats: " + str(beats))
+    print("Playback: " + str(playback))
     initial_buffer = 0
     initial_beat = 0
 
