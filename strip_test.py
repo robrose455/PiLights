@@ -131,10 +131,10 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         t2 = time.thread_time_ns()
 
         t3 = (t2 - t1) / 10000000
-        print(t3)
+        
 
 
-        wait_time = beats[cur_beat + 1] - beats[cur_beat]
+        wait_time = beats[cur_beat + 1] - beats[cur_beat] - (t3/100)
 
         print(wait_time)
 
