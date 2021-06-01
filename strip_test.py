@@ -76,12 +76,12 @@ def sync_to_song(beats, playback):
             #START LIGHTS
             # wait_time = beats[j] - beats[j + 1]
 
-            initial_buffer = beats[i + 1] - playback
+            initial_buffer = beats[i + 1] - playback - 0.07
             initial_beat = i + 1
 
             if initial_buffer < 0.5:
 
-                initial_buffer = beats[i + 2] - playback
+                initial_buffer = beats[i + 2] - playback - 0.07
                 initial_beat = i + 2
 
     print("Buffer: " + str(initial_buffer))
