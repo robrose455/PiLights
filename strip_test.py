@@ -4,6 +4,10 @@ import time
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import configparser
+from random import seed
+from random import random
+
+seed(1)
 
 
 config = configparser.ConfigParser()
@@ -25,6 +29,9 @@ sp = spotipy.Spotify(
                               open_browser=False
                               )
 )
+
+colors = [ (255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (255, 0, 255), (0, 255, 255) ]
+
 
 strip = neopixel.NeoPixel(
     LED_PIN, LED_COUNT
@@ -94,23 +101,22 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
     cur_beat = initial_beat
 
+    cur_color = colors[randint(0, len(colors))]
+
     while cur_beat < total_beats - 1:
 
         cur_beat += 1
 
-        brightness = 1
-        #while brightness < 255:
-
-            #strip.brightness = brightness
-            #brightness += 1
-            #strip.fill((255,0,0))
-            #strip.show()
-
-        strip.fill((255,0,0))
+        strip.fill(cur_color)
         strip.show()
 
-        strip.fill((0,0,0))
-        strip.show()
+        prev_color = cur_color
+        new_color = False
+        while new_color = False:
+            cur_color = colors[randint(0, len(colors))]
+            if prev_color is not cur_color:
+                new_color = True            
+
 
         wait_time = beats[cur_beat + 1] - beats[cur_beat]
         print(wait_time)
