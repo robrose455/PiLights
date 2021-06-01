@@ -132,7 +132,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
         wait_time = beats[cur_beat + 1] - beats[cur_beat]
 
-        time.sleep(wait_time - t3)
+        time.sleep(wait_time - (t3 / 1000))
 
     print("Song Ended")
 
