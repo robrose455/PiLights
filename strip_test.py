@@ -25,15 +25,13 @@ sp = spotipy.Spotify(
                               open_browser=False
                               )
 )
-print("test")
+
 strip = neopixel.NeoPixel(
     LED_PIN, LED_COUNT
 )
 def get_current_track_id():
-    
-    print("test pre")
+
     response = sp.current_user_playing_track()
-    print("test post")
     print(response)
     track_id = response['item']['id']
 
@@ -51,6 +49,7 @@ def get_rhythm(track_id):
 
 
 def get_playback_position():
+
     response = sp.current_playback()
     playback_pos_ms = response["progress_ms"]
 
@@ -58,7 +57,7 @@ def get_playback_position():
 
 
 def play_song(beats, playback):
-    
+
     sp.pause_playback()
     sp.start_playback(context_uri='spotify:playlist:6mf5APVavd17vvPWzxRaq8', offset={
                       "position": 5}, position_ms=0)
@@ -77,7 +76,13 @@ def play_song(beats, playback):
 
         time.sleep(wait_time)
 
+def test_data_loop():
+
+    while True:
+        print(sp.get_playback_position)
+
 
 if __name__ == '__main__':
 
-    play_song(beats=get_rhythm(track_id=get_current_track_id()), playback=get_playback_position())
+    test_data_loop()
+    #play_song(beats=get_rhythm(track_id=get_current_track_id()), playback=get_playback_position())
