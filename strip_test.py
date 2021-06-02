@@ -118,18 +118,20 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
     while cur_beat < total_beats - 2 and same_song is True:
 
-        #response = sp.current_user_playing_track()
-        #track_id = response['item']['id']
+        t1 = time.thread_time_ns()
 
-        #if track_id != current_song_id:
-            #print("Hit")
-            #print("T: " + track_id)
-            #print("C: " + current_song_id)
-            #same_song = False
+        response = sp.current_user_playing_track()
+        track_id = response['item']['id']
+
+        if track_id != current_song_id:
+            print("Hit")
+            print("T: " + track_id)
+            print("C: " + current_song_id)
+            same_song = False
+
+        t2 = time.thread_time_ns()
 
         cur_beat += 1
-
-        t1 = time.thread_time_ns()
 
         strip.fill(colors[cur_color])
 
@@ -146,16 +148,15 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
         strip.brightness = 1.0
 
-        t2 = time.thread_time_ns()
-
         t3 = (t2 - t1) / 10000000
 
-        if not pulse_mode:
-            t3 = 0
+        #if not pulse_mode:
+            #t3 = 0
+
+        print("Time Elapsed: " + t3)
 
 
         wait_time = beats[cur_beat + 1] - beats[cur_beat] - ((t3/100) * 2)
-        print(strip.brightness)
 
         print(wait_time)
 
