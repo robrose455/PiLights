@@ -112,7 +112,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
     cur_color = 0
 
     brightness = 1.0
-    
+
     same_song = True
 
 
@@ -156,7 +156,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
 
         wait_time = beats[cur_beat + 1] - beats[cur_beat] - ((t3/100) * 2)
-        print(t3)
+        print(strip.brightness)
 
         print(wait_time)
 
