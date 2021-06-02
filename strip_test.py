@@ -21,6 +21,8 @@ client_secret = config.get('SPOTIFY', 'CLIENT_SECRET')
 
 scope = "user-read-currently-playing", "user-read-playback-state", "user-modify-playback-state"
 
+current_song_id = None
+
 sp = spotipy.Spotify(
     auth_manager=SpotifyOAuth(scope=scope,
                               redirect_uri="http://127.0.0.1:5000/login/authorized",
@@ -40,6 +42,7 @@ def get_current_track_id():
 
     response = sp.current_user_playing_track()
     track_id = response['item']['id']
+    current_song_id = track_id
 
     return track_id
 
@@ -105,7 +108,15 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
     brightness = 0.1
 
-    while cur_beat < total_beats - 2:
+    same_song = True
+
+    while cur_beat < total_beats - 2 and same_song is True:
+
+        response = sp.current_user_playing_track()
+        track_id = response['item']['id']
+
+        if track_id is not current_song_id:
+            same_song = False
 
         cur_beat += 1
 
