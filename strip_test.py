@@ -4,10 +4,6 @@ import time
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import configparser
-from random import seed
-from random import random
-
-seed(1)
 
 
 config = configparser.ConfigParser()
@@ -118,37 +114,23 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
     while cur_beat < total_beats - 2 and same_song is True:
 
-
-
         t1 = time.thread_time_ns()
 
+        # Check if songs have changed
         response = sp.current_user_playing_track()
         track_id = response['item']['id']
 
         if track_id != current_song_id:
-            print("Hit")
-            print("T: " + track_id)
-            print("C: " + current_song_id)
             same_song = False
-
-
 
         cur_beat += 1
 
         strip.fill(colors[cur_color])
 
-        if pulse_mode:
-            while brightness < 1.0:
-                strip.brightness = brightness
-                strip.show()
-                brightness += 0.05
 
         cur_color += 1
-
         if cur_color == len(colors):
             cur_color = 0
-
-        strip.brightness = 1.0
 
         t2 = time.thread_time_ns()
 
@@ -166,8 +148,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         time.sleep(wait_time)
 
     print("Song Ended")
-
-    time.sleep(3)
+    time.sleep(2)
 
 
 
