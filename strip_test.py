@@ -117,6 +117,8 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
         if track_id is not current_song_id:
             print("Hit")
+            print("T: " + track_id)
+            print("C: " + current_song_id)
             same_song = False
 
         cur_beat += 1
