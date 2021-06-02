@@ -114,6 +114,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
     while cur_beat < total_beats - 2 and same_song is True:
 
+        #Beggining of operation buffer
         t1 = time.thread_time_ns()
 
         # Check if songs have changed
@@ -132,8 +133,8 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         if cur_color == len(colors):
             cur_color = 0
 
+        # End of operation buffer
         t2 = time.thread_time_ns()
-
         t3 = (t2 - t1) / 10000000
 
         if not pulse_mode:
@@ -150,14 +151,23 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
     print("Song Ended")
     time.sleep(2)
 
+def testing():
+
+    red = 0
+
+    for i in range(30):
+
+        strip[i] = (red, 0, 0)
+
+        red += 7
+
+
+
 
 
 if __name__ == '__main__':
 
-    #sp.pause_playback()
-    #sp.start_playback(context_uri='spotify:playlist:6mf5APVavd17vvPWzxRaq8', offset={
-                      #"position": 5}, position_ms=0)
-
-    while True:
-        initial_buffer, initial_beat, total_beats, beats = sync_to_song(beats=get_rhythm(track_id=get_current_track_id()), playback=get_playback_position())
-        control_lights(initial_buffer, initial_beat, total_beats, beats)
+    testing()
+    #while True:
+        #initial_buffer, initial_beat, total_beats, beats = sync_to_song(beats=get_rhythm(track_id=get_current_track_id()), playback=get_playback_position())
+        #control_lights(initial_buffer, initial_beat, total_beats, beats)
