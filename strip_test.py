@@ -120,6 +120,8 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
 
 
+        t1 = time.thread_time_ns()
+        
         response = sp.current_user_playing_track()
         track_id = response['item']['id']
 
@@ -134,7 +136,6 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         cur_beat += 1
 
         strip.fill(colors[cur_color])
-        t1 = time.thread_time_ns()
 
         if pulse_mode:
             while brightness < 1.0:
