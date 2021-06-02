@@ -40,6 +40,8 @@ strip = neopixel.NeoPixel(
 )
 def get_current_track_id():
 
+    global current_song_id
+    
     response = sp.current_user_playing_track()
     track_id = response['item']['id']
     current_song_id = track_id
