@@ -144,8 +144,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         if cur_color == len(colors):
             cur_color = 0
 
-        strip.brightness = 0.1
-        brightness = 0.1
+        strip.brightness = 1.0
 
         t2 = time.thread_time_ns()
 
