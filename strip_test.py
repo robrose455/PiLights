@@ -118,14 +118,14 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
     while cur_beat < total_beats - 2 and same_song is True:
 
-        response = sp.current_user_playing_track()
-        track_id = response['item']['id']
+        #response = sp.current_user_playing_track()
+        #track_id = response['item']['id']
 
-        if track_id != current_song_id:
-            print("Hit")
-            print("T: " + track_id)
-            print("C: " + current_song_id)
-            same_song = False
+        #if track_id != current_song_id:
+            #print("Hit")
+            #print("T: " + track_id)
+            #print("C: " + current_song_id)
+            #same_song = False
 
         cur_beat += 1
 
