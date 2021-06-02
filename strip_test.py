@@ -103,7 +103,7 @@ def sync_to_song(beats, playback):
 
 def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
-    pulse_mode = True
+    pulse_mode = False
 
     time.sleep(initial_buffer)
 
