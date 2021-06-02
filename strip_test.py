@@ -38,10 +38,11 @@ colors = [ (255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (255, 0, 255), 
 strip = neopixel.NeoPixel(
     LED_PIN, LED_COUNT, brightness=1.0, auto_write=True
 )
+
 def get_current_track_id():
 
     global current_song_id
-    
+
     response = sp.current_user_playing_track()
     track_id = response['item']['id']
     current_song_id = track_id
@@ -117,7 +118,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         response = sp.current_user_playing_track()
         track_id = response['item']['id']
 
-        if track_id is not current_song_id:
+        if track_id != current_song_id:
             print("Hit")
             print("T: " + track_id)
             print("C: " + current_song_id)
