@@ -121,7 +121,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
 
         t1 = time.thread_time_ns()
-        
+
         response = sp.current_user_playing_track()
         track_id = response['item']['id']
 
@@ -159,7 +159,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
         print("Time Elapsed: " + str(t3))
 
-        wait_time = beats[cur_beat + 1] - beats[cur_beat] - ((t3/100) * 2)
+        wait_time = beats[cur_beat + 1] - beats[cur_beat] - (t3)
 
         print(wait_time)
 
