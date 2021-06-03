@@ -173,7 +173,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
             r += tri
             g += tgi
             b += tbi
-            strip.fill((r, g, b))
+            strip.fill((int(r), int(g), int(b)))
 
         strip.brightness = confidence[cur_beat]
         strip.show()
