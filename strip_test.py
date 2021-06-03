@@ -99,18 +99,11 @@ def sync_to_song(beats, playback):
 
 def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
-    pulse_mode = False
 
     time.sleep(initial_buffer)
-
     cur_beat = initial_beat
-
     cur_color = 0
-
-    brightness = 1.0
-
     same_song = True
-
 
     while cur_beat < total_beats - 2 and same_song is True:
 
@@ -118,11 +111,11 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         t1 = time.thread_time_ns()
 
         # Check if songs have changed
-        #response = sp.current_user_playing_track()
-        #track_id = response['item']['id']
+        response = sp.current_user_playing_track()
+        track_id = response['item']['id']
 
-        #if track_id != current_song_id:
-            #same_song = False
+        if track_id != current_song_id:
+            same_song = False
 
         cur_beat += 1
 
@@ -136,9 +129,6 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         # End of operation buffer
         t2 = time.thread_time_ns()
         t3 = (t2 - t1) / 10000000
-
-        if not pulse_mode:
-            t3 = 0
 
         print("Time Elapsed: " + str(t3))
 
