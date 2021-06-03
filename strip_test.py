@@ -144,8 +144,8 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
 
     time.sleep(initial_buffer)
     cur_beat = initial_beat
-    cur_color = 0
-    prev_color = 0
+    cur_color = (0,0,0)
+    prev_color = (0,0,0)
     same_song = True
     is_playing = True
     steps = 1
@@ -164,7 +164,6 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
             same_song = False
 
         cur_beat += 1
-
         # 111, 255, 0
         p_r = prev_color[0]
         p_g = prev_color[1]
