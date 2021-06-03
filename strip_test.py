@@ -189,11 +189,11 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
             for i in range(30):
 
                 if i % 2 == 0:
-                    
-                r += tri
-                g += tgi
-                b += tbi
-                strip.fill((int(r), int(g), int(b)))
+
+                    r += tri
+                    g += tgi
+                    b += tbi
+                    strip.fill((int(r), int(g), int(b)))
 
             for i in range(30):
 
