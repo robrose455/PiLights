@@ -56,6 +56,7 @@ def get_song_data(track_id):
     audio_analysis = response['beats']
 
     response = sp.audio_features(track_id)
+    print(response)
     levels['dance'] = response['danceability']
     levels['energy'] = response['energy']
 
