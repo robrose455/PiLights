@@ -42,6 +42,8 @@ cool_colors = [ (43, 15, 153),
                 (0, 122, 88),
                 (219, 0, 208) ]
 
+colors = [ (255,0,0), (0,255,0) ]
+
 
 strip = neopixel.NeoPixel(
     LED_PIN, LED_COUNT, brightness=1.0, auto_write=True
@@ -126,6 +128,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
 
     time.sleep(initial_buffer)
     cur_beat = initial_beat
+    cool_colors = colors
     cur_color = 0
     prev_color = 0
     same_song = True
@@ -189,7 +192,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
         t3 = (t2 - t1) / 10000000
 
         fuck_it_buffer = 0.065
-        wait_time = beats[cur_beat + 1] - beats[cur_beat] - fuck_it_buffer 
+        wait_time = beats[cur_beat + 1] - beats[cur_beat] - fuck_it_buffer
 
         print(wait_time)
 
