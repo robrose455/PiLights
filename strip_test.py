@@ -48,7 +48,7 @@ def get_current_track_id():
 
 def get_rhythm(track_id):
     response = sp.audio_analysis(track_id)
-    audio_analysis = response['tatums']
+    audio_analysis = response['bars']
     beats = []
     for i in range(len(audio_analysis)):
         beats.append(audio_analysis[i]['start'])
@@ -174,7 +174,7 @@ def testing():
 
 if __name__ == '__main__':
 
-    testing()
-    #while True:
-        #initial_buffer, initial_beat, total_beats, beats = sync_to_song(beats=get_rhythm(track_id=get_current_track_id()), playback=get_playback_position())
-        #control_lights(initial_buffer, initial_beat, total_beats, beats)
+    
+    while True:
+        initial_buffer, initial_beat, total_beats, beats = sync_to_song(beats=get_rhythm(track_id=get_current_track_id()), playback=get_playback_position())
+        control_lights(initial_buffer, initial_beat, total_beats, beats)
