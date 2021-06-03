@@ -49,14 +49,11 @@ color_dic = {
     "Red": (255, 0, 0),
     "Orange": (255, 98, 0),
     "Yellow": (255, 255, 0),
-    "Light Green": (179, 255, 0),
     "Green": (0, 255, 26),
     "Light Blue": (0, 255, 208),
     "Blue": (0, 101, 252),
-    "Dark Blue": (34, 0, 255),
     "Purple": (165, 97, 201),
     "Pink": (245, 0, 233),
-    "Red-Pink": (255, 0, 85)
 
 }
 
@@ -194,6 +191,12 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
             g += tgi
             b += tbi
             strip.fill((int(r), int(g), int(b)))
+
+            for i in range(30):
+
+                if i % 2 == 0:
+
+                    strip.fill(random.choice(list(color_dic.values())))
 
         strip.brightness = confidence[cur_beat]
         strip.show()
