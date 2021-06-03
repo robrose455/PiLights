@@ -46,14 +46,24 @@ def get_current_track_id():
     return track_id
 
 
-def get_rhythm(track_id):
+def get_song_data(track_id):
+
+    beats = []
+    confidence = []
+    levels = {}
+
     response = sp.audio_analysis(track_id)
     audio_analysis = response['beats']
-    beats = []
+
+    response = sp.audio_features(track_id)
+    levels['dance'] = response['danceability']
+    levels['energy'] = response['energy']
+
     for i in range(len(audio_analysis)):
         beats.append(audio_analysis[i]['start'])
+        confidence.append(audio_analysis[i]['confidence'])
 
-    return beats
+    return beats, confidence, levels
 
 
 def get_playback_position():
@@ -97,13 +107,15 @@ def sync_to_song(beats, playback):
     print("Starting Beat: " + str(initial_beat))
     return initial_buffer, initial_beat, total_beats, beats
 
-def control_lights(initial_buffer, initial_beat, total_beats, beats):
+def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence, levels):
 
 
     time.sleep(initial_buffer)
     cur_beat = initial_beat
     cur_color = 0
     same_song = True
+    print(levels)
+    print(confidence)
 
     while cur_beat < total_beats - 2 and same_song is True:
 
@@ -168,5 +180,7 @@ if __name__ == '__main__':
 
 
     while True:
-        initial_buffer, initial_beat, total_beats, beats = sync_to_song(beats=get_rhythm(track_id=get_current_track_id()), playback=get_playback_position())
-        control_lights(initial_buffer, initial_beat, total_beats, beats)
+
+        beats, confidence, levels = get_rhythm(track_id=get_current_track_id())
+        initial_buffer, initial_beat, total_beats, beats = sync_to_song(beats, playback=get_playback_position())
+        control_lights(initial_buffer, initial_beat, total_beats, beats, confidence, levels)
