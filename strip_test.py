@@ -155,11 +155,11 @@ def testing():
 
     red = 0
 
-    for i in range(30):
+    for i in range(10):
 
-        strip[i] = (red, 0, 0)
+        strip[i] = (0, red, 0)
 
-        red += 7
+        red += 10
 
 
 
