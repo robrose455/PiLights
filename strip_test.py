@@ -189,7 +189,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
         t3 = (t2 - t1) / 10000000
 
         fuck_it_buffer = 0.065
-        wait_time = beats[cur_beat + 1] - beats[cur_beat] - fuck_it_buffer - (t3/100)
+        wait_time = beats[cur_beat + 1] - beats[cur_beat] - fuck_it_buffer 
 
         print(wait_time)
 
