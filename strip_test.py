@@ -28,7 +28,19 @@ sp = spotipy.Spotify(
                               )
 )
 
-colors = [ (255, 0, 0), (0, 0, 255) ]
+cool_colors = [ (43, 15, 153),
+                (52, 0, 255),
+                (0, 234, 255),
+                (110, 234, 245),
+                (192, 92, 255),
+                (120, 0, 196),
+                (156, 0, 255),
+                (198, 129, 219),
+                (96, 247, 222),
+                (31, 156, 135),
+                (0, 255, 212),
+                (0, 122, 88),
+                (219, 0, 208) ]
 
 
 strip = neopixel.NeoPixel(
@@ -59,6 +71,7 @@ def get_song_data(track_id):
 
     levels['dance'] = response[0]['danceability']
     levels['energy'] = response[0]['energy']
+    levels['valence'] = response[0]['valence']
 
     for i in range(len(audio_analysis)):
         beats.append(audio_analysis[i]['start'])
@@ -130,7 +143,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
 
         cur_beat += 1
 
-        strip.fill(colors[cur_color])
+        strip.fill(cool_colors[cur_color])
         strip.brightness = confidence[cur_beat]
         strip.show()
 
@@ -153,27 +166,6 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
 
     print("Song Ended")
     time.sleep(2)
-
-def testing():
-
-    color = None
-
-    for i in range(10):
-
-        if i % 2 == 0:
-
-            color = (255, 0, 0)
-
-        else:
-
-            color = (0, 0, 255)
-
-
-        strip[i] = color
-
-
-
-
 
 if __name__ == '__main__':
 
