@@ -56,7 +56,7 @@ def get_song_data(track_id):
     audio_analysis = response['beats']
 
     response = sp.audio_features(track_id)
-    print(response)
+
     levels['dance'] = response[0]['danceability']
     levels['energy'] = response[0]['energy']
 
@@ -115,8 +115,6 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
     cur_beat = initial_beat
     cur_color = 0
     same_song = True
-    print(levels)
-    print(confidence)
 
     while cur_beat < total_beats - 2 and same_song is True:
 
@@ -133,6 +131,8 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
         cur_beat += 1
 
         strip.fill(colors[cur_color])
+        strip.brightness = confidence[cur_beat]
+        strip.show()
 
 
         cur_color += 1
@@ -143,8 +143,6 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
         t2 = time.thread_time_ns()
         t3 = (t2 - t1) / 10000000
         t3 = 0
-
-        print("Time Elapsed: " + str(t3))
 
         fuck_it_buffer = 0.065
         wait_time = beats[cur_beat + 1] - beats[cur_beat] - fuck_it_buffer
