@@ -133,6 +133,8 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
     prev_color = 0
     same_song = True
 
+    steps = 1
+
     while cur_beat < total_beats - 2 and same_song is True:
 
         #Beggining of operation buffer
@@ -163,15 +165,15 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
         t_b = c_b - p_b
 
         # -0.29, -0.66
-        tri = t_r / 10
-        tgi = t_g / 10
-        tbi = t_b / 10
+        tri = t_r / steps
+        tgi = t_g / steps
+        tbi = t_b / steps
 
         r = p_r
         g = p_g
         b = p_b
 
-        for i in range(10):
+        for i in range(steps):
 
             r += tri
             g += tgi
