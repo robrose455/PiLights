@@ -133,7 +133,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
         print("Time Elapsed: " + str(t3))
 
-        fuck_it_buffer = 0.03
+        fuck_it_buffer = 0.040
         wait_time = beats[cur_beat + 1] - beats[cur_beat] - (t3/100) - fuck_it_buffer
 
         print(wait_time)
