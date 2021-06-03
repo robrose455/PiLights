@@ -127,6 +127,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
     time.sleep(initial_buffer)
     cur_beat = initial_beat
     cur_color = 0
+    prev_color = 0
     same_song = True
 
     while cur_beat < total_beats - 2 and same_song is True:
@@ -143,22 +144,52 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
 
         cur_beat += 1
 
-        strip.fill(cool_colors[cur_color])
+        # 111, 255, 0
+        p_r = cool_colors[prev_color[0]]
+        p_g = cool_colors[prev_color[1]]
+        p_b = cool_colors[prev_color[2]]
+
+        # 82, 189, 0
+        c_r = cool_colors[cur_color[0]]
+        c_g = cool_colors[cur_color[1]]
+        c_b = cool_colors[cur_color[2]]
+
+        # -29, -66
+        t_r = c_r - p_r
+        t_g = c_g - p_g
+        t_b = c_b - p_b
+
+        # -0.29, -0.66
+        tri = t_r / 100
+        tgi = t_g / 100
+        tbi = t_b / 100
+
+        r = p_r
+        g = p_g
+        b = p_b
+        
+        for i in range 100:
+
+            r += tri
+            g += tgi
+            b += tbi
+            strip.fill(r, g, b)
+
         strip.brightness = confidence[cur_beat]
         strip.show()
 
-
+        prev_color = cur_color
         cur_color += 1
         if cur_color == len(cool_colors):
             cur_color = 0
 
+
         # End of operation buffer
         t2 = time.thread_time_ns()
         t3 = (t2 - t1) / 10000000
-        t3 = 0
 
         fuck_it_buffer = 0.065
-        wait_time = beats[cur_beat + 1] - beats[cur_beat] - fuck_it_buffer
+        wait_time = beats[cur_beat + 1] - beats[cur_beat] - fuck_it_buffer - (t3/100)
 
         print(wait_time)
 
