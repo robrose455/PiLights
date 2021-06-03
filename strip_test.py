@@ -190,16 +190,14 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
             r += tri
             g += tgi
             b += tbi
-            for i in range(30):
-                if i % 2 == 0:
 
-                    strip.fill((int(r), int(g), int(b)))
+            strip.fill((int(r), int(g), int(b)))
 
             for i in range(30):
 
                 if i % 2 == 0:
-                    color = random.choice(list(color_dic))
-                    strip.fill(random.choice(list(color_dic.values())))
+                
+                    strip[i] = (random.choice(list(color_dic.values())))
 
         strip.brightness = confidence[cur_beat]
         strip.show()
