@@ -166,14 +166,14 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
         cur_beat += 1
 
         # 111, 255, 0
-        p_r = cool_colors[prev_color][0]
-        p_g = cool_colors[prev_color][1]
-        p_b = cool_colors[prev_color][2]
+        p_r = prev_color[0]
+        p_g = prev_color[1]
+        p_b = prev_color[2]
 
         # 82, 189, 0
-        c_r = cool_colors[cur_color][0]
-        c_g = cool_colors[cur_color][1]
-        c_b = cool_colors[cur_color][2]
+        c_r = cur_color[0]
+        c_g = cur_color[1]
+        c_b = cur_color[2]
 
         # -29, -66
         t_r = c_r - p_r
@@ -200,9 +200,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
         strip.show()
 
         prev_color = cur_color
-        cur_color += 1
-        if cur_color == len(cool_colors):
-            cur_color = 0
+        cur_color = random.choice(list(color_dic.values()))
 
 
         # End of operation buffer
