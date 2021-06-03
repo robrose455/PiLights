@@ -163,9 +163,9 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
         t_b = c_b - p_b
 
         # -0.29, -0.66
-        tri = t_r / 100
-        tgi = t_g / 100
-        tbi = t_b / 100
+        tri = t_r / 10
+        tgi = t_g / 10
+        tbi = t_b / 10
 
         r = p_r
         g = p_g
