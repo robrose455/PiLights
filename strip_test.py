@@ -181,6 +181,6 @@ if __name__ == '__main__':
 
     while True:
 
-        beats, confidence, levels = get_rhythm(track_id=get_current_track_id())
+        beats, confidence, levels = get_song_data(track_id=get_current_track_id())
         initial_buffer, initial_beat, total_beats, beats = sync_to_song(beats, playback=get_playback_position())
         control_lights(initial_buffer, initial_beat, total_beats, beats, confidence, levels)
