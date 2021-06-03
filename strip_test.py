@@ -167,8 +167,8 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
         r = p_r
         g = p_g
         b = p_b
-        
-        for i in range 100:
+
+        for i in range(100):
 
             r += tri
             g += tgi
