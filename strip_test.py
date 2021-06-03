@@ -4,6 +4,7 @@ import time
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import configparser
+import random
 
 
 config = configparser.ConfigParser()
@@ -41,6 +42,23 @@ cool_colors = [ (43, 15, 153),
                 (0, 255, 212),
                 (0, 122, 88),
                 (219, 0, 208) ]
+
+
+color_dic = {
+
+    "Red": (255, 0, 0),
+    "Orange": (255, 98, 0),
+    "Yellow": (255, 255, 0),
+    "Light Green": (179, 255, 0),
+    "Green": (0, 255, 26),
+    "Light Blue": (0, 255, 208),
+    "Blue": (0, 101, 252),
+    "Dark Blue": (34, 0, 255),
+    "Purple": (165, 97, 201),
+    "Pink": (245, 0, 233),
+    "Red-Pink": (255, 0, 85)
+
+}
 
 
 strip = neopixel.NeoPixel(
@@ -196,6 +214,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
         wait_time = beats[cur_beat + 1] - beats[cur_beat] - fuck_it_buffer - t3
 
         print(wait_time)
+        print(random.randint(0,9))
 
         time.sleep(wait_time)
 
