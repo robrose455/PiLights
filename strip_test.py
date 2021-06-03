@@ -191,10 +191,10 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
 
         # End of operation buffer
         t2 = time.thread_time_ns()
-        t3 = (t2 - t1) / 10000000
+        t3 = (t2 - t1) / 1000000000
 
         fuck_it_buffer = 0.065
-        wait_time = beats[cur_beat + 1] - beats[cur_beat] - fuck_it_buffer
+        wait_time = beats[cur_beat + 1] - beats[cur_beat] - fuck_it_buffer - t3
 
         print(wait_time)
 
