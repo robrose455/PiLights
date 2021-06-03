@@ -133,7 +133,6 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
     prev_color = 0
     same_song = True
     is_playing = True
-
     steps = 1
 
     while cur_beat < total_beats - 2 and same_song is True and is_playing is True:
@@ -196,7 +195,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
         t3 = (t2 - t1) / 1000000000
         t3 = 0
 
-        fuck_it_buffer = 0.065
+        fuck_it_buffer = 0.068
         wait_time = beats[cur_beat + 1] - beats[cur_beat] - fuck_it_buffer - t3
 
         print(wait_time)
