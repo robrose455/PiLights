@@ -48,7 +48,7 @@ def get_current_track_id():
 
 def get_rhythm(track_id):
     response = sp.audio_analysis(track_id)
-    audio_analysis = response['tatums']
+    audio_analysis = response['beats']
     beats = []
     for i in range(len(audio_analysis)):
         beats.append(audio_analysis[i]['start'])
