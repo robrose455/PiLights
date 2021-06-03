@@ -129,10 +129,11 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
         # End of operation buffer
         t2 = time.thread_time_ns()
         t3 = (t2 - t1) / 10000000
+        t3 = 0
 
         print("Time Elapsed: " + str(t3))
 
-        fuck_it_buffer = 3
+        fuck_it_buffer = 0
         wait_time = beats[cur_beat + 1] - beats[cur_beat] - (t3/100) - fuck_it_buffer
 
         print(wait_time)
