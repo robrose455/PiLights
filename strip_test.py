@@ -149,7 +149,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
 
 
         cur_color += 1
-        if cur_color == len(colors):
+        if cur_color == len(cool_colors):
             cur_color = 0
 
         # End of operation buffer
