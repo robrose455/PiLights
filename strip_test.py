@@ -132,10 +132,11 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
     cur_color = 0
     prev_color = 0
     same_song = True
+    is_playing = True
 
     steps = 1
 
-    while cur_beat < total_beats - 2 and same_song is True:
+    while cur_beat < total_beats - 2 and same_song is True and is_playing is True:
 
         #Beggining of operation buffer
         t1 = time.thread_time_ns()
@@ -143,6 +144,7 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
         # Check if songs have changed
         response = sp.current_user_playing_track()
         track_id = response['item']['id']
+        is_playing = response['is_playing']
 
         if track_id != current_song_id:
             same_song = False
@@ -201,8 +203,13 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats, confidence,
 
         time.sleep(wait_time)
 
+    while is_playing is False:
+
+        response = sp.current_user_playing_track()
+        is_playing = response['is_playing']
+
     print("Song Ended")
-    time.sleep(2)
+    time.sleep(1)
 
 if __name__ == '__main__':
 
