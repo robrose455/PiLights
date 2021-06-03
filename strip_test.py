@@ -153,13 +153,20 @@ def control_lights(initial_buffer, initial_beat, total_beats, beats):
 
 def testing():
 
-    red = 0
+    color = None
 
     for i in range(10):
 
-        strip[i] = (255, red, 0)
+        if i % 2 == 0:
 
-        red += 10
+            color = (255, 0, 0)
+
+        else:
+
+            color = (0, 0, 255)
+
+
+        strip[i] = color
 
 
 
