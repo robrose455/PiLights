@@ -157,7 +157,7 @@ def testing():
 
     for i in range(10):
 
-        strip[i] = (255, red, 0)
+        strip[i] = (255, red, 0, red)
 
         red += 10
 
