@@ -80,7 +80,7 @@ def get_song_data(track_id):
     levels = {}
 
     response = sp.audio_analysis(track_id)
-    audio_analysis = response['beats']
+    audio_analysis = response['tatums']
 
     response = sp.audio_features(track_id)
 
@@ -118,11 +118,7 @@ def sync_to_song(beats, playback):
         # i = 2300
         if beats[i] < playback < beats[i + 1]:
 
-            # playback is in between these beats
 
-            # beats[i + 1] - 100ms delay
-            #START LIGHTS
-            # wait_time = beats[j] - beats[j + 1]
 
             initial_buffer = beats[i + 1] - playback - 0.07
             initial_beat = i + 1
