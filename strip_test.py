@@ -10,7 +10,7 @@ import random
 config = configparser.ConfigParser()
 config.read('config.cfg')
 
-LED_COUNT = 30  # Number of LED pixels.
+LED_COUNT = 150  # Number of LED pixels.
 LED_PIN = board.D18  # GPIO pinW
 
 client_id = config.get('SPOTIFY', 'CLIENT_ID')
